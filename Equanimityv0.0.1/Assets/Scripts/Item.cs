@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : MonoBehaviour
+public class Item
 {
     protected int level;
 
-    public Equipment()
+    public Item()
     {
         level = 1;
     }
