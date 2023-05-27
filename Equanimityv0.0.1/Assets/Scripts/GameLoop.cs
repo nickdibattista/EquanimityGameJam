@@ -17,7 +17,7 @@ public class GameLoop : MonoBehaviour
         Melee meleeWeapon = new Melee();
         Ranged rangedWeapon = new Ranged(10);
         Armor armor = new Armor(0.7f, 0.1f);
-        allItems = { meleeWeapon, rangedWeapon, armor};
+        //allItems = { meleeWeapon, rangedWeapon, armor};
 
     }
 

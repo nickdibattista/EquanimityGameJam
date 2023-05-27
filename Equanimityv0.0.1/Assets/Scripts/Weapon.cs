@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : Item
 {
     protected int baseRange, baseCooldown, baseDamage;
-
+    
     public Weapon(int baseRange, int baseCooldown) : base ()
     {
         this.baseRange = baseRange;
@@ -28,5 +28,7 @@ public class Weapon : Item
         int totalDamage = baseDamage * level;
         return GetDamage();
     }
+
+    
 
 }
