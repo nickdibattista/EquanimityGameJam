@@ -27,8 +27,8 @@ public class GameLoop : MonoBehaviour
 
         // TEMPORARY \/
         //upgraderScript.InsertItem(rangedScript);
-        equippedItems[0] = meleeScript;
-        equippedItems[1] = armorScript;
+       // equippedItems[0] = meleeScript;
+        //equippedItems[1] = armorScript;
         // TEMPORARY /\
     }
 

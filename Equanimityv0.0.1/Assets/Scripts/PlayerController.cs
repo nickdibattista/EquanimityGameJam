@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 mousePosition;
     public WeaponBehaviour weapon;
+    Animator anim;
     
 
     // Update is called once per frame
@@ -26,12 +27,20 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInputs()
     {
+        anim = gameObject.GetComponent<Animator>();
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
         if(Input.GetMouseButtonDown(0))
         {
             weapon.Fire();
+            anim.SetTrigger("SwingBat");
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            weapon.Fire();
+            anim.SetTrigger("Punch");
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
