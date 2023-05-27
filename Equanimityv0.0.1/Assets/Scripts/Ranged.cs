@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utility : Weapon
+public class Ranged : Weapon
 {
     protected int radius;
-    public Utility(int radius) : base(10, 10)
+    public Ranged(int radius) : base(10, 10)
     {
         this.radius = radius;
     }

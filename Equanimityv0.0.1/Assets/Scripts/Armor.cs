@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armor : Equipment
+public class Armor : Item
 {
     // 0 - 1. Percentage of damage taken.
     protected float damageCoef;
-    protected int weight;
+    protected float weight;
 
-    public Armor(int damageCoef, int weight) : base()
+    public Armor(float damageCoef, float weight) : base()
     {
         this.damageCoef = damageCoef;
         this.weight = weight;
@@ -20,7 +20,7 @@ public class Armor : Equipment
         return totalDamage;
     }
 
-    public int GetWeight()
+    public float GetWeight()
     {
         return weight;
     }
