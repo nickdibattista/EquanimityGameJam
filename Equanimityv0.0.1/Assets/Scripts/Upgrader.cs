@@ -6,9 +6,9 @@ public class Upgrader
 {
     protected Item item;
 
-    public Upgrader(Item item)
+    public Upgrader()
     {
-        this.item = item;
+
     }
 
     public Item SwapItem(Item newItem)
@@ -33,5 +33,15 @@ public class Upgrader
     {
         item = newItem;
         item.SetInUpgrader(true);
+    }
+
+    public Item GetItem()
+    {
+        return item;
+    }
+
+    public bool HasItem()
+    {
+        return item != null;
     }
 }
