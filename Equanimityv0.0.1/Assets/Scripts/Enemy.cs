@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public Enemy() : base(20, 5, 5)
+    protected int spawnRate;
+    public Enemy(int spawnRate) : base(20, 5, 5)
     {
-
+        this.spawnRate = spawnRate;
     }
 }

@@ -5,21 +5,26 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    protected Item[] item;
+    protected Item[] items;
     public Player() : base(100, 10, 10)
     {
-        item = new Item[2];
+        items = new Item[2];
     }
 
-    public Item[] GetItem()
+    public void SetItems(Item[] newItems)
     {
-        return item;
+        items = newItems;
+    }
+
+    public Item[] GetItems()
+    {
+        return items;
     }
 
     public Item SwapItems(Item swapIn, Item swapOut)
     {
-        int index = Array.IndexOf(item, swapOut);
-        item[index] = swapIn;
+        int index = Array.IndexOf(items, swapOut);
+        items[index] = swapIn;
         return swapOut;
     }
 
