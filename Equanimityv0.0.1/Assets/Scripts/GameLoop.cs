@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 public class GameLoop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerObject, meleeObject, rangedObject, armorObject;
+    private GameObject playerObject, meleeObject, rangedObject, armorObject, mapCover, workshopCover;
 
     private Player playerScript;
     private Upgrader upgraderScript;
@@ -14,7 +14,8 @@ public class GameLoop : MonoBehaviour
     private Item[] allItems;
     private Item[] equippedItems = new Item[2];
 
-    private 
+    private bool inWorkshop = true;
+    private bool upgraderItemSwapped = false;
 
     void Start()
     {
@@ -29,6 +30,27 @@ public class GameLoop : MonoBehaviour
         equippedItems[0] = meleeScript;
         equippedItems[1] = armorScript;
         // TEMPORARY /\
+    }
+
+    public bool InWorkshop()
+    {
+        return inWorkshop;
+    }
+    public void EnterWorkshop()
+    {
+        Debug.Log("enter");
+        playerObject.transform.position = new Vector2(0, 27.5f);
+        inWorkshop = true;
+        mapCover.SetActive(true);
+        workshopCover.SetActive(false);
+    }
+    public void ExitWorkshop()
+    {
+        Debug.Log("exit");
+        playerObject.transform.position = new Vector2(0, 30);
+        inWorkshop = false;
+        workshopCover.SetActive(true);
+        mapCover.SetActive(false);
     }
 
     void Update()
