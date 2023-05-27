@@ -11,14 +11,27 @@ public class Upgrader
         this.item = item;
     }
 
-    public void SwapItem(Item newItem)
+    public Item SwapItem(Item newItem)
     {
         UpgradeItem();
+
+        Item oldItem = item;
         item = newItem;
+
+        oldItem.SetInUpgrader(false);
+        newItem.SetInUpgrader(true);
+
+        return oldItem;
     }
 
     private void UpgradeItem()
     {
         item.LevelUp();
+    }
+
+    public void InsertItem(Item newItem)
+    {
+        item = newItem;
+        item.SetInUpgrader(true);
     }
 }
