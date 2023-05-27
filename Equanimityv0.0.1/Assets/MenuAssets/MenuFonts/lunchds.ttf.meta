@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9b5ad5bc635535742b395dbac2821b36
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Lunchtime Doubly So
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 854cf418731a2f644b09bad7d40f9db7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
