@@ -27,4 +27,9 @@ public class Entity
     {
         return damage;
     }
+
+    public void TakeDamage()
+    {
+        health -= 1;
+    }
 }

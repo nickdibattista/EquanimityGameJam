@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
         switch(other.gameObject.tag)
         {
             case "Enemy":
-            //Do something to the enemy, take damage
+                other.GetComponent<EnemyBehaviour>().Damage();
             break;
         }
         Destroy(gameObject);
