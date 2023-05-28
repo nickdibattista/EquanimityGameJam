@@ -6,12 +6,8 @@ using UnityEngine;
 public class MeleeBehaviour : MonoBehaviour
 {
     public GameObject projectile;
-    public Transform firePoint;
-    public float fireForce;
     //private bool manuallyCreate = true;
 
-    [SerializeField]
-    private int baseDamage, baseRange, baseCooldown;
     private Melee meleeScript;
 
     void Start()
@@ -25,10 +21,9 @@ public class MeleeBehaviour : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log(meleeScript);
-        GameObject prop = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        GameObject prop = Instantiate(projectile, transform.position, transform.rotation);
         prop.GetComponent<Projectile>().SetDamage(meleeScript.GetDamage());
-        prop.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        //prop.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
     }
 
     public void SetMeleeScript(Melee meleeScript)

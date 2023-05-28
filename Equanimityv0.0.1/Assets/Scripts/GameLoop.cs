@@ -40,12 +40,14 @@ public class GameLoop : MonoBehaviour
         SpawnItem("molotov");
         SpawnItem("chestProtector");
         SpawnEnemy("evilEye");
+        SpawnEnemy("evilEye");
+        SpawnEnemy("evilEye");
 
 
         // TEMPORARY \/
-       // upgraderScript.InsertItem(rangedScript);
-      //  equippedItems[0] = meleeScript;
-       // equippedItems[1] = armorScript;
+        // upgraderScript.InsertItem(rangedScript);
+        //  equippedItems[0] = meleeScript;
+        // equippedItems[1] = armorScript;
         // TEMPORARY /\
     }
 
@@ -56,14 +58,18 @@ public class GameLoop : MonoBehaviour
         {
             case "bat":
                 GameObject melee = Instantiate(batPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
+                melee.transform.localPosition = new Vector3(0, 0.2f, -1);
                 Melee meleeScript = new Melee(10, 1, 1);
                 melee.GetComponent<MeleeBehaviour>().SetMeleeScript(meleeScript);
                 playerController.SetMelee(melee.GetComponent<MeleeBehaviour>());
                 allItems.Add(meleeScript);
                 break;
             case "molotov":
-                GameObject ranged = Instantiate(molotovPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
-                Ranged rangedScript = new Ranged(10, 1, 1, 1);
+                GameObject ranged = Instantiate(molotovPrefab, new Vector3(0, 0.2f, 0), Quaternion.identity, playerObject.transform);
+                ranged.transform.localPosition = new Vector3(0, 0.2f, -1);
+                Ranged rangedScript = new Ranged(30, 2, 1, 0.5f);
+                ranged.GetComponent<RangedBehaviour>().SetRangedScript(rangedScript);
+                playerController.SetRanged(ranged.GetComponent<RangedBehaviour>());
                 allItems.Add(rangedScript);
                 break;
             case "chestProtector":
@@ -78,8 +84,19 @@ public class GameLoop : MonoBehaviour
 
     public void SpawnEnemy(String type)
     {
-
         GameObject spawnPoint = spawnPoints[0];
+        switch (activeEnemies.Count)
+        { 
+            case 0:
+                spawnPoint = spawnPoints[0];
+                break;
+            case 1:
+                spawnPoint = spawnPoints[1];
+                break;
+            case 2:
+                spawnPoint = spawnPoints[2];
+                break;
+        } 
         if (type == "evilEye")
         {
             GameObject enemy = Instantiate(evilEyePrefab, spawnPoint.transform.position, Quaternion.identity);

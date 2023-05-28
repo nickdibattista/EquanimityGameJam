@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveDirection;
     private Vector2 mousePosition;
-    public MeleeBehaviour melee;
+    private MeleeBehaviour melee;
+    private RangedBehaviour ranged;
     [SerializeField]
     private Animator anim;
     public Player player;
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1))
         {
-            melee.Fire();
+            ranged.Fire();
             anim.SetTrigger("Punch");
         }
 
@@ -83,4 +84,8 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void SetRanged(RangedBehaviour ranged)
+    {
+        this.ranged = ranged;
+    }
 }
