@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,7 +30,10 @@ public class PlayerController : MonoBehaviour
         slider.value = (player.getHealth());
         if(player.getHealth() <= 0)
         {
-            //Player is dead | Do something
+            
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+        //Player is dead | Do something
 
         }
     }
