@@ -5,15 +5,22 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Rigidbody2D rb;
-    // Start is called before the first frame update
-    void OnTriggerEnter2D(Collider2D other) 
+    protected int damage;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        switch(other.gameObject.tag)
+        switch (other.gameObject.tag)
         {
             case "Enemy":
-            //Do something to the enemy, take damage
+                Debug.Log(damage);
+                other.GetComponent<EnemyBehaviour>().TakeDamage(damage);
             break;
         }
         Destroy(gameObject);
+    }
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 }

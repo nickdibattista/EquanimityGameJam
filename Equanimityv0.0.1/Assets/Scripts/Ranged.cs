@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ranged : Weapon
 {
     protected int radius;
-    public Ranged(int radius) : base(10, 10)
+    public Ranged(int baseDamage, int baseRange, int baseCooldown, int radius) : base(baseDamage, baseRange, baseCooldown)
     {
         this.radius = radius;
     }

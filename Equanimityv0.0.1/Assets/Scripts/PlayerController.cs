@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 moveDirection;
     private Vector2 mousePosition;
-    public WeaponBehaviour weapon;
-    Animator anim;
+    public MeleeBehaviour melee;
+    [SerializeField]
+    private Animator anim;
     
 
     // Update is called once per frame
@@ -27,19 +28,18 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInputs()
     {
-        anim = gameObject.GetComponent<Animator>();
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
         if(Input.GetMouseButtonDown(0))
         {
-            weapon.Fire();
+            melee.Fire();
             anim.SetTrigger("SwingBat");
         }
 
         if(Input.GetMouseButtonDown(1))
         {
-            weapon.Fire();
+            melee.Fire();
             anim.SetTrigger("Punch");
         }
 
@@ -54,5 +54,10 @@ public class PlayerController : MonoBehaviour
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = aimAngle;
+    }
+
+    public void SetMelee(MeleeBehaviour melee)
+    {
+        this.melee = melee;
     }
 }
