@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator anim;
     public Player player;
+    public SpriteRenderer sprite;
     
     public GameObject healthBarUI;
     public Slider slider;
@@ -56,8 +57,15 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1))
         {
+<<<<<<< Updated upstream
             ranged.Fire();
             anim.SetTrigger("Punch");
+=======
+            if (ranged.Fire())
+            {
+                //anim.SetTrigger("Punch");
+            }
+>>>>>>> Stashed changes
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
@@ -80,12 +88,20 @@ public class PlayerController : MonoBehaviour
 
     public float CalculatedHealth(int damage)
     {
-        return player.TakeDamage(damage); // This gets health as a percentage 
+        StartCoroutine(FlashRed());
+        return player.TakeDamage(damage); 
     }
 
 
     public void SetRanged(RangedBehaviour ranged)
     {
         this.ranged = ranged;
+    }
+
+    public IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 }

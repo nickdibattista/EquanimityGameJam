@@ -2011,6 +2011,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1301779454 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 137765091326117506, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+  m_PrefabInstance: {fileID: 2083345951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302123178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,7 +3127,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 25b82d697693715449c462e0bbd31b72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4386,29 +4391,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137765090973397701, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: m_ScaleFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137765090973397701, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 137765090973397702, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 137765090973397702, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 137765090973397702, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_PlaneDistance
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 137765090995262822, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -456.80005
+      value: -175
       objectReference: {fileID: 0}
     - target: {fileID: 137765090995262822, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 237.30002
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 137765091566382212, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -556
+      value: -274.19998
       objectReference: {fileID: 0}
     - target: {fileID: 137765091566382212, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 234
+      value: 98.69998
       objectReference: {fileID: 0}
     - target: {fileID: 137765091566382213, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_Value
@@ -4417,6 +4434,10 @@ PrefabInstance:
     - target: {fileID: 137765091566382213, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_MaxValue
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 137765091644497808, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 137765091644497809, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: m_RootOrder
@@ -4466,6 +4487,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 137765091644497836, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137765091644497838, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1301779454}
     - target: {fileID: 137765091644497838, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
       propertyPath: sceneCamera
       value: 

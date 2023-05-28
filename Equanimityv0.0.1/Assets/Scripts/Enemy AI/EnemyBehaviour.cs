@@ -11,6 +11,9 @@ public class EnemyBehaviour : MonoBehaviour
     private float attackDelay = 1; 
     private float attackTimer = 0;
     private bool isTouching = false;
+    public SpriteRenderer sprite;
+
+
 
     void Start()
     {
@@ -31,7 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void TakeDamage(int damage)
-    {
+    {   
+        StartCoroutine(FlashRed());
         int health = enemyScript.TakeDamage(damage);
         if (enemyScript.IsDead())
         {
@@ -67,12 +71,21 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {   
-        isTouching = true;
         if(other.gameObject.tag == "Player")
         {
-                player.CalculatedHealth(enemyScript.GetDamage());
-                Debug.Log("you have entered the pain domaine "); 
+            isTouching = true;
+            player.CalculatedHealth(enemyScript.GetDamage());
+            Debug.Log("you have entered the pain domaine "); 
         }
     }
+
+    public IEnumerator FlashRed()
+    {
+        Debug.Log("Flashing red!");
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
+
 
 }
