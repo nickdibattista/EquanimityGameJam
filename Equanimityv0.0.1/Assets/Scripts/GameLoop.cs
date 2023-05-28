@@ -10,7 +10,8 @@ public class GameLoop : MonoBehaviour
     [SerializeField]
     private GameObject camera, playerObject, itemSwapButtons, playerPrefab, evilEyePrefab, batPrefab, molotovPrefab, chestProtectorPrefab, punchPrefab;
     [SerializeField]
-    private List<GameObject> spawnPoints = new List<GameObject>();
+    private GameObject spawnPoints;
+    //private List<GameObject> spawnPoints = new List<GameObject>();
 
 
     private Player playerScript;
@@ -125,11 +126,11 @@ public class GameLoop : MonoBehaviour
                 spawnPoint = spawnPoints[2];
                 break;
         }*/
-        foreach(GameObject spawnPoint in spawnPoints)
+        foreach(Transform spawnPoint in spawnPoints.transform)
         {
             if (type == "evilEye")
             {
-                GameObject enemy = Instantiate(evilEyePrefab, spawnPoint.transform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(evilEyePrefab, spawnPoint.position, Quaternion.identity);
                 Enemy enemyScript = new Enemy(50, 15, 10, this, currentEnemyId++);
                 enemy.GetComponent<EnemyBehaviour>().SetEnemyScript(enemyScript);
                 activeEnemies.Add(enemyScript);
