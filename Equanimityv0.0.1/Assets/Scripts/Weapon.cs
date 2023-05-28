@@ -6,8 +6,9 @@ public class Weapon : Item
 {
     protected int baseRange, baseCooldown, baseDamage;
     
-    public Weapon(int baseRange, int baseCooldown) : base ()
+    public Weapon(int baseDamage, int baseRange, int baseCooldown) : base ()
     {
+        this.baseDamage = baseDamage;
         this.baseRange = baseRange;
         this.baseCooldown = baseCooldown;
     }
@@ -26,7 +27,7 @@ public class Weapon : Item
     public int GetDamage()
     {
         int totalDamage = baseDamage * level;
-        return GetDamage();
+        return totalDamage;
     }
 
     

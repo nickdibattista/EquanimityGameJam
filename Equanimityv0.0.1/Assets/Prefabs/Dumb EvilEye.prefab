@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2311082554878976952}
   - component: {fileID: 2311082554878976953}
   m_Layer: 0
-  m_Name: EvilEye
+  m_Name: Dumb EvilEye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
