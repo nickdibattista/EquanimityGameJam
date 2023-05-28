@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: dpcomic_generated
+  m_Name: dpcomic
   m_EditorClassIdentifier: 
-  hashCode: 1305989359
-  material: {fileID: 2158863185969436244}
-  materialHashCode: 1658172911
+  hashCode: 0
+  material: {fileID: 4680767363774717282}
+  materialHashCode: 0
   m_Version: 1.1.0
   m_SourceFontFileGUID: d5a02eaa68178cf4e90c63b1c58d723f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d5a02eaa68178cf4e90c63b1c58d723f, type: 3}
@@ -1755,7 +1755,7 @@ MonoBehaviour:
     m_GlyphIndex: 96
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: 5726753422285946534}
+  - {fileID: 9190919606238481361}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 0
@@ -2428,15 +2428,15 @@ MonoBehaviour:
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
---- !u!21 &2158863185969436244
+--- !u!21 &4680767363774717282
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dpcomic_generated Material
-  m_Shader: {fileID: 4800000, guid: 128e987d567d4e2c824d754223b3f3b0, type: 3}
+  m_Name: dpcomic Material
+  m_Shader: {fileID: 4800000, guid: ecf009eb98e90b34e902cc4d912cf62d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -2453,7 +2453,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 5726753422285946534}
+        m_Texture: {fileID: 9190919606238481361}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -2473,13 +2473,13 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!28 &5726753422285946534
+--- !u!28 &9190919606238481361
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dpcomic_generated Atlas
+  m_Name: dpcomic Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
