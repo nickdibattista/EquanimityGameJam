@@ -28,6 +28,7 @@ public class MeleeBehaviour : MonoBehaviour
         {
             GameObject prop = Instantiate(projectile, transform.position, transform.rotation);
             prop.GetComponent<Projectile>().SetDamage(meleeScript.GetDamage());
+            prop.GetComponent<Projectile>().SetKnockback(meleeScript.GetKnockback());
             StartCoroutine(Cooldown());
             attacked = true;
         }
