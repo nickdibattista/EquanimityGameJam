@@ -48,6 +48,9 @@ TagManager:
   - name: Entities
     uniqueID: 726266747
     locked: 0
+  - name: groundObstacles
+    uniqueID: 1835688257
+    locked: 0
   - name: Shadow
     uniqueID: 4176415049
     locked: 0
