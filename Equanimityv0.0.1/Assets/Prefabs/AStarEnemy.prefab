@@ -299,4 +299,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manuallyCreate: 1
-  player: {fileID: 0}
+  player: {fileID: 137765091644497838, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
+  sprite: {fileID: 7443910486470333617}
