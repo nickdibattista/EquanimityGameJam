@@ -52,7 +52,6 @@ public class Player : Entity
         }
         health -= (int)finalDamage;
 
-        Debug.Log(finalDamage);
 
         return health;
     }

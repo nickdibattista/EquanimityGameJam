@@ -16,7 +16,7 @@ public class Armor : Item
 
     public float GetDamage(float baseDamage)
     {
-        float totalDamage = baseDamage * damageCoef;
+        float totalDamage = baseDamage * (damageCoef / level);
         Debug.Log($"{baseDamage} * {damageCoef} = {totalDamage}");
         return totalDamage;
     }

@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(health);
+        Debug.Log($"Took {damage} damage");
     }
 
     /*IEnumerator Die()

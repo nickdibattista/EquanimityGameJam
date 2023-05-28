@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
                     break;
             }
         }
-        Debug.Log($"{enemies} colliders");
+        //Debug.Log($"{enemies} colliders");
         StartCoroutine(Decay());
     }
 

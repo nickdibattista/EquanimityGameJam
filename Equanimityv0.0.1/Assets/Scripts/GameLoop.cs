@@ -50,7 +50,7 @@ public class GameLoop : MonoBehaviour
         SpawnItem("molotov");
         SpawnItem("chestProtector");
         SpawnItem("punch");
-        SpawnEnemy("evilEye");
+        //SpawnEnemy("evilEye");
         /*SpawnEnemy("evilEye");
         SpawnEnemy("evilEye");*/
 
@@ -84,7 +84,7 @@ public class GameLoop : MonoBehaviour
                 GameObject ranged = Instantiate(molotovPrefab, new Vector3(0, 0.2f, 0), Quaternion.identity, playerObject.transform);
                 itemGameobjects.Add(ranged);
                 ranged.transform.localPosition = new Vector3(0, 0.2f, -1);
-                Ranged rangedScript = new Ranged(30, 2, 3, 0.75f);
+                Ranged rangedScript = new Ranged(20, 2, 3, 0.75f);
                 ranged.GetComponent<RangedBehaviour>().SetRangedScript(rangedScript);
                 playerController.SetRanged(ranged);
                 allItems.Add(rangedScript);
@@ -92,6 +92,7 @@ public class GameLoop : MonoBehaviour
             case "chestProtector":
                 GameObject armor = Instantiate(chestProtectorPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
                 itemGameobjects.Add(armor);
+                armor.transform.localPosition = new Vector3(-0.01f, 0.04f, 0);
                 Armor armorScript = new Armor(0.7f, 0.2f);
                 allItems.Add(armorScript);
                 break;
@@ -109,9 +110,9 @@ public class GameLoop : MonoBehaviour
 
     }
 
-    public void SpawnEnemy(String type)
+    public void SpawnEnemies(String type)
     {
-        GameObject spawnPoint = spawnPoints[0];
+        /*GameObject spawnPoint = spawnPoints[0];
         switch (activeEnemies.Count)
         { 
             case 0:
@@ -123,14 +124,18 @@ public class GameLoop : MonoBehaviour
             case 2:
                 spawnPoint = spawnPoints[2];
                 break;
-        } 
-        if (type == "evilEye")
+        }*/
+        foreach(GameObject spawnPoint in spawnPoints)
         {
-            GameObject enemy = Instantiate(evilEyePrefab, spawnPoint.transform.position, Quaternion.identity);
-            Enemy enemyScript = new Enemy(50, 15, 10, this, currentEnemyId++);
-            enemy.GetComponent<EnemyBehaviour>().SetEnemyScript(enemyScript);
-            activeEnemies.Add(enemyScript);
-            enemy.GetComponent<AIDestinationSetter>().target = playerObject.transform;
+            if (type == "evilEye")
+            {
+                GameObject enemy = Instantiate(evilEyePrefab, spawnPoint.transform.position, Quaternion.identity);
+                Enemy enemyScript = new Enemy(50, 15, 10, this, currentEnemyId++);
+                enemy.GetComponent<EnemyBehaviour>().SetEnemyScript(enemyScript);
+                activeEnemies.Add(enemyScript);
+                enemy.GetComponent<AIDestinationSetter>().target = playerObject.transform;
+            }
+
         }
     }
 
@@ -152,9 +157,12 @@ public class GameLoop : MonoBehaviour
     }
     public void EnterWorkshop()
     {
-        upgraderItemSwapped = false;
-        playerObject.transform.position = new Vector2(0, 27.5f);
-        inWorkshop = true;
+        if (activeEnemies.Count == 0)
+        {
+            upgraderItemSwapped = false;
+            playerObject.transform.position = new Vector2(0, 27.5f);
+            inWorkshop = true;
+        }
         //mapCover.SetActive(true);
         //workshopCover.SetActive(false);
     }
@@ -164,6 +172,7 @@ public class GameLoop : MonoBehaviour
         {
             playerObject.transform.position = new Vector2(71.5f, 21);
             inWorkshop = false;
+            SpawnEnemies("evilEye");
             //workshopCover.SetActive(true);
             //mapCover.SetActive(false);
         }
