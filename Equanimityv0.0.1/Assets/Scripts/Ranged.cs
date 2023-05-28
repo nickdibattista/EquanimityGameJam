@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Ranged : Weapon
 {
-    protected int radius;
-    public Ranged(int baseDamage, int baseRange, int baseCooldown, int radius) : base(baseDamage, baseRange, baseCooldown)
+    protected float radius;
+    public Ranged(int baseDamage, int baseRange, int baseCooldown, float radius) : base(baseDamage, baseRange, baseCooldown)
     {
         this.radius = radius;
     }
 
-    public int GetRadius()
+    public float GetRadius()
     {
         return radius;
     }
