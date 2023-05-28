@@ -4,16 +4,60 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    // Start is called before the first frame update
-    void OnTriggerEnter2D(Collider2D other) 
+    protected int damage;
+    protected float radius = 0.5f;
+    protected float knockback = 0;
+
+    private void Start()
     {
-        switch(other.gameObject.tag)
+        var cols = Physics2D.OverlapCircleAll(transform.position, radius);
+        int enemies = 0;
+        foreach (var col in cols)
+        {
+            switch (col.gameObject.tag)
+            {
+                case "Enemy":
+                    Debug.Log(damage);
+                    enemies++;
+                    col.GetComponent<Rigidbody2D>().AddForce(transform.up * knockback * 100000, ForceMode2D.Force);
+                    col.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                    break;
+            }
+        }
+        Debug.Log($"{enemies} colliders");
+        StartCoroutine(Decay());
+    }
+
+    /*void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
         {
             case "Enemy":
-                other.GetComponent<EnemyBehaviour>().Damage();
+                Debug.Log(damage);
+                other.GetComponent<EnemyBehaviour>().TakeDamage(damage);
             break;
         }
+        Destroy(gameObject);
+    }*/
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
+    public void SetRadius(float radius)
+    {
+        this.radius = radius;
+    }
+
+    public void SetKnockback(float knockback)
+    {
+        this.knockback = knockback;
+    }
+
+    IEnumerator Decay()
+    {
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 }

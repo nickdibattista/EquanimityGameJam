@@ -39,5 +39,11 @@ public class CameraController : MonoBehaviour
     {
         transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime);
     }
+
+    void Start()
+    {
+        // player = GameObject.Find("Player").GetComponent<Transform>();
+        // cam = GameObject.Find("MainCamera").GetComponent<Camera>();
+    }
 }
 
