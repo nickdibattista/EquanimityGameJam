@@ -29,7 +29,7 @@ public class GameLoop : MonoBehaviour
 
     void Start()
     {
-        playerObject = Instantiate(playerPrefab, new Vector2(-4, 22), Quaternion.identity);
+        playerObject = Instantiate(playerPrefab, new Vector2(70, 70), Quaternion.identity);
         playerScript = new Player();
 
         playerController = playerObject.GetComponent<PlayerController>();
@@ -160,7 +160,7 @@ public class GameLoop : MonoBehaviour
         if (activeEnemies.Count == 0)
         {
             upgraderItemSwapped = false;
-            playerObject.transform.position = new Vector2(0, 27.5f);
+            playerObject.transform.position = new Vector2(69.5f, 69);
             inWorkshop = true;
         }
         //mapCover.SetActive(true);
