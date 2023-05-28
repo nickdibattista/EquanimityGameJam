@@ -50,4 +50,9 @@ public class MeleeBehaviour : MonoBehaviour
         canAttack = true;
     }
 
+    private void OnEnable()
+    {
+        canAttack = true;
+    }
+
 }

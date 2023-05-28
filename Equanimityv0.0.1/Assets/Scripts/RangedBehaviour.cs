@@ -53,4 +53,9 @@ public class RangedBehaviour : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         canAttack = true;
     }
+
+    private void OnEnable()
+    {
+        canAttack = true;
+    }
 }

@@ -6,29 +6,30 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    protected Item[] items;
+    protected List<Item> items;
     protected int maxHealth = 100;
     public Player() : base(100, 10, 10)
     {
-        items = new Item[2];
+        items = new List<Item>();
     }
 
-    public void SetItems(Item[] newItems)
+    public void SetItems(List<Item> newItems)
     {
         items = newItems;
+        Debug.Log(items);
     }
 
-    public Item[] GetItems()
+    public List<Item> GetItems()
     {
         return items;
     }
 
-    public Item SwapItems(Item swapIn, Item swapOut)
+    /*public Item SwapItems(Item swapIn, Item swapOut)
     {
         int index = Array.IndexOf(items, swapOut);
         items[index] = swapIn;
         return swapOut;
-    }
+    }*/
 
     public int getHealth()
     {
@@ -38,7 +39,20 @@ public class Player : Entity
     public override int TakeDamage(int damage)
     {
         //todo add armor to mitigate damage taken
-        health -= damage;
+        float finalDamage = damage;
+        foreach (Item item in items)
+        {
+            if (item is Armor)
+            {
+                if (item.IsEquipped())
+                {
+                    finalDamage = (item as Armor).GetDamage(damage);
+                }
+            }
+        }
+        health -= (int)finalDamage;
+
+
         return health;
     }
 

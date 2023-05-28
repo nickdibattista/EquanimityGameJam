@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        player = GameObject.Find("Player(Clone)").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(health);
+        Debug.Log($"Took {damage} damage");
     }
 
     /*IEnumerator Die()
