@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : Entity
 {
     protected Item[] items;
-    protected int Health;
+    protected int maxHealth = 100;
     public Player() : base(100, 10, 10)
     {
         items = new Item[2];
-        Health = 100;
     }
 
     public void SetItems(Item[] newItems)
@@ -32,13 +32,15 @@ public class Player : Entity
 
     public int getHealth()
     {
-        return Health;
+        return health;
     }
 
-    void takeDamage(int damage)
+    public override int TakeDamage(int damage)
     {
         //todo add armor to mitigate damage taken
-        Health -= damage;
+        health -= damage;
+        return health;
     }
+
 
 }

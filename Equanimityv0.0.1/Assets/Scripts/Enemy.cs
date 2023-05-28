@@ -10,6 +10,7 @@ public class Enemy : Entity
     {
         this.gameLoop = gameLoop;
         this.id = id;
+        this.damage = damage;
     }
 
     public bool IsDead()
