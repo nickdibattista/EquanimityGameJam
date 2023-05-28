@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Weapon : Item
 {
-    protected int baseRange, baseCooldown, baseDamage;
+    protected int baseRange, baseDamage;
+    protected float baseCooldown;
     
-    public Weapon(int baseDamage, int baseRange, int baseCooldown) : base ()
+    public Weapon(int baseDamage, int baseRange, float baseCooldown) : base ()
     {
         this.baseDamage = baseDamage;
         this.baseRange = baseRange;
@@ -18,9 +19,9 @@ public class Weapon : Item
         int totalRange = baseRange * level;
         return totalRange;
     }
-    public int GetCooldown()
+    public float GetCooldown()
     {
-        int totalCooldown = baseCooldown / level;
+        float totalCooldown = baseCooldown / level;
         return totalCooldown;
     }
 
