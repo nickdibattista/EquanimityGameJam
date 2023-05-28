@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
         {
             if (melee.Fire())
             {
-                anim.SetTrigger("SwingBat");
+
+                anim.Play("SwingBat");
             }
         }
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             if (ranged.Fire())
             {
-                anim.SetTrigger("Punch");
+                anim.Play("Punch");
             }
         }
 
@@ -69,5 +70,10 @@ public class PlayerController : MonoBehaviour
     public void SetRanged(RangedBehaviour ranged)
     {
         this.ranged = ranged;
+    }
+
+    public void SetCamera(GameObject camera)
+    {
+        sceneCamera = camera.GetComponent<Camera>();
     }
 }

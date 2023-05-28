@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 public class GameLoop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerObject, meleeObject, rangedObject, armorObject, mapCover, workshopCover, itemSwapButtons, evilEyePrefab, batPrefab, molotovPrefab, chestProtectorPrefab;
+    private GameObject camera, playerObject, meleeObject, rangedObject, armorObject, mapCover, workshopCover, itemSwapButtons, playerPrefab, evilEyePrefab, batPrefab, molotovPrefab, chestProtectorPrefab;
     [SerializeField]
     private List<GameObject> spawnPoints = new List<GameObject>();
 
@@ -28,7 +28,10 @@ public class GameLoop : MonoBehaviour
 
     void Start()
     {
+        playerObject = Instantiate(playerPrefab, new Vector2(71.5f, 21), Quaternion.identity);
         playerController = playerObject.GetComponent<PlayerController>();
+        playerController.SetCamera(camera);
+        camera.GetComponent<CameraController>().SetPlayer(playerObject);
 
 
         /*Melee meleeWeapon = new Melee(10, 10, 1);
