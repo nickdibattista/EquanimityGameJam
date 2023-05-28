@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: dpcomic
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1578234751
   material: {fileID: 4680767363774717282}
-  materialHashCode: 0
+  materialHashCode: 1067078271
   m_Version: 1.1.0
   m_SourceFontFileGUID: d5a02eaa68178cf4e90c63b1c58d723f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d5a02eaa68178cf4e90c63b1c58d723f, type: 3}
@@ -43,6 +43,21 @@ MonoBehaviour:
     m_StrikethroughThickness: 0.625
     m_TabWidth: 5
   m_GlyphTable:
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 0
+      m_Height: 0
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 0
+      m_HorizontalAdvance: 5
+    m_GlyphRect:
+      m_X: 34
+      m_Y: 272
+      m_Width: 1
+      m_Height: 1
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   - m_Index: 4
     m_Metrics:
       m_Width: 3
@@ -1395,6 +1410,10 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
+    m_Unicode: 32
+    m_GlyphIndex: 3
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 33
     m_GlyphIndex: 4
     m_Scale: 1
@@ -2120,6 +2139,10 @@ MonoBehaviour:
     m_Y: 280
     m_Width: 10
     m_Height: 10
+  - m_X: 30
+    m_Y: 268
+    m_Width: 9
+    m_Height: 9
   m_FreeGlyphRects:
   - m_X: 11
     m_Y: 103
@@ -2333,22 +2356,26 @@ MonoBehaviour:
     m_Y: 302
     m_Width: 487
     m_Height: 14
-  - m_X: 33
-    m_Y: 252
-    m_Width: 479
-    m_Height: 28
-  - m_X: 38
-    m_Y: 252
-    m_Width: 474
-    m_Height: 40
   - m_X: 28
     m_Y: 290
     m_Width: 484
     m_Height: 2
+  - m_X: 33
+    m_Y: 252
+    m_Width: 479
+    m_Height: 16
+  - m_X: 38
+    m_Y: 277
+    m_Width: 474
+    m_Height: 15
+  - m_X: 39
+    m_Y: 252
+    m_Width: 473
+    m_Height: 40
   - m_X: 30
-    m_Y: 268
+    m_Y: 277
     m_Width: 482
-    m_Height: 12
+    m_Height: 3
   m_fontInfo:
     Name: 
     PointSize: 0
@@ -2393,7 +2420,7 @@ MonoBehaviour:
     atlasWidth: 512
     atlasHeight: 512
     characterSetSelectionMode: 7
-    characterSequence: qwertyuiopasdfghjklzxcvbnm;:'"[{]},<.>/?1234567890!@#$%^&*()-=_+QWERTYUIOPASDFGHJKLZXCVBNM
+    characterSequence: 'qwertyuiopasdfghjklzxcvbnm;:''"[{]},<.>/?1234567890!@#$%^&*()-=_+QWERTYUIOPASDFGHJKLZXCVBNM '
     referencedFontAssetGUID: 
     referencedTextAssetGUID: 
     fontStyle: 0
