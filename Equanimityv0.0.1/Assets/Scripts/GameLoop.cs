@@ -58,7 +58,7 @@ public class GameLoop : MonoBehaviour
         {
             case "bat":
                 GameObject melee = Instantiate(batPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
-                melee.transform.localPosition = new Vector3(0, 0.2f, -1);
+                melee.transform.localPosition = new Vector3(0, 0.3f, -1);
                 Melee meleeScript = new Melee(10, 1, 0.5f);
                 melee.GetComponent<MeleeBehaviour>().SetMeleeScript(meleeScript);
                 playerController.SetMelee(melee.GetComponent<MeleeBehaviour>());
