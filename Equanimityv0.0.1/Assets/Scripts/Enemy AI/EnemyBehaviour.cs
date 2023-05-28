@@ -6,30 +6,36 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
     private bool manuallyCreate;
-    private Enemy enemy;
+    private Enemy enemyScript;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (manuallyCreate)
-        {
 
-        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void SetEnemy(Enemy enemy)
+    public void SetEnemyScript(Enemy enemyScript)
     {
-        this.enemy = enemy;
+        this.enemyScript = enemyScript;
     }
 
-    public void Damage()
+    public void TakeDamage(int damage)
     {
-        enemy.TakeDamage();
+        int health = enemyScript.TakeDamage(damage);
+        if (enemyScript.IsDead())
+        {
+            Destroy(gameObject);
+        }
+        Debug.Log(health);
     }
+
+    /*IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }*/
 }

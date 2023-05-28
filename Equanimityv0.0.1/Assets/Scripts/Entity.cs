@@ -28,8 +28,10 @@ public class Entity
         return damage;
     }
 
-    public void TakeDamage()
+    public virtual int TakeDamage(int damage)
     {
-        health -= 1;
+        health -= damage;
+        return health;
     }
+
 }
