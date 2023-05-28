@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     protected int damage;
     protected float radius = 0.5f;
+    protected float knockback = 0;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class Projectile : MonoBehaviour
                 case "Enemy":
                     Debug.Log(damage);
                     enemies++;
+                    col.GetComponent<Rigidbody2D>().AddForce(transform.up * knockback * 100000, ForceMode2D.Force);
                     col.GetComponent<EnemyBehaviour>().TakeDamage(damage);
                     break;
             }
@@ -46,6 +48,11 @@ public class Projectile : MonoBehaviour
     public void SetRadius(float radius)
     {
         this.radius = radius;
+    }
+
+    public void SetKnockback(float knockback)
+    {
+        this.knockback = knockback;
     }
 
     IEnumerator Decay()

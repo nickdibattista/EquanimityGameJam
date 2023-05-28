@@ -58,8 +58,8 @@ public class GameLoop : MonoBehaviour
         {
             case "bat":
                 GameObject melee = Instantiate(batPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
-                melee.transform.localPosition = new Vector3(0, 0.2f, -1);
-                Melee meleeScript = new Melee(10, 1, 1);
+                melee.transform.localPosition = new Vector3(0, 0.3f, -1);
+                Melee meleeScript = new Melee(10, 1, 0.5f, 1f);
                 melee.GetComponent<MeleeBehaviour>().SetMeleeScript(meleeScript);
                 playerController.SetMelee(melee.GetComponent<MeleeBehaviour>());
                 allItems.Add(meleeScript);
@@ -67,7 +67,7 @@ public class GameLoop : MonoBehaviour
             case "molotov":
                 GameObject ranged = Instantiate(molotovPrefab, new Vector3(0, 0.2f, 0), Quaternion.identity, playerObject.transform);
                 ranged.transform.localPosition = new Vector3(0, 0.2f, -1);
-                Ranged rangedScript = new Ranged(30, 2, 1, 0.5f);
+                Ranged rangedScript = new Ranged(30, 2, 3, 0.75f);
                 ranged.GetComponent<RangedBehaviour>().SetRangedScript(rangedScript);
                 playerController.SetRanged(ranged.GetComponent<RangedBehaviour>());
                 allItems.Add(rangedScript);
