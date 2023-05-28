@@ -9,6 +9,8 @@ public class MeleeBehaviour : MonoBehaviour
     //private bool manuallyCreate = true;
 
     private Melee meleeScript;
+    protected float cooldown;
+    protected bool canAttack = true;
 
     void Start()
     {
@@ -19,17 +21,32 @@ public class MeleeBehaviour : MonoBehaviour
     }
 
 
-    public void Fire()
+    public bool Fire()
     {
-        GameObject prop = Instantiate(projectile, transform.position, transform.rotation);
-        prop.GetComponent<Projectile>().SetDamage(meleeScript.GetDamage());
-        //prop.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        bool attacked = false;
+        if (canAttack)
+        {
+            GameObject prop = Instantiate(projectile, transform.position, transform.rotation);
+            prop.GetComponent<Projectile>().SetDamage(meleeScript.GetDamage());
+            StartCoroutine(Cooldown());
+            attacked = true;
+        }
+        return attacked;
     }
 
     public void SetMeleeScript(Melee meleeScript)
     {
         this.meleeScript = meleeScript;
+        cooldown = meleeScript.GetCooldown();
         Debug.Log("Set Melee Script");
+    }
+
+    IEnumerator Cooldown()
+    {
+        Debug.Log("cooldown started");
+        canAttack = false;
+        yield return new WaitForSeconds(cooldown);
+        canAttack = true;
     }
 
 }

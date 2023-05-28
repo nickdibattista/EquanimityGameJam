@@ -34,14 +34,18 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            melee.Fire();
-            anim.SetTrigger("SwingBat");
+            if (melee.Fire())
+            {
+                anim.SetTrigger("SwingBat");
+            }
         }
 
         if(Input.GetMouseButtonDown(1))
         {
-            ranged.Fire();
-            anim.SetTrigger("Punch");
+            if (ranged.Fire())
+            {
+                anim.SetTrigger("Punch");
+            }
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
