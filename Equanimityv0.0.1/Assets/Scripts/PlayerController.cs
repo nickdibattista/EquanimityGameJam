@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,12 +14,27 @@ public class PlayerController : MonoBehaviour
     private RangedBehaviour ranged;
     [SerializeField]
     private Animator anim;
+    public Player player;
     
+    public GameObject healthBarUI;
+    public Slider slider;
 
     // Update is called once per frame
     void Update()
     {
         ProcessInputs();
+        slider.value = (player.getHealth());
+        if(player.getHealth() <= 0)
+        {
+            //Player is dead | Do something
+
+        }
+    }
+
+    void Start()
+    {
+        player = new Player();
+        //sceneCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
     //called on set amount of time physics shit
@@ -65,6 +81,12 @@ public class PlayerController : MonoBehaviour
     {
         this.melee = melee;
     }
+
+    public float CalculatedHealth(int damage)
+    {
+        return player.TakeDamage(damage); // This gets health as a percentage 
+    }
+
 
     public void SetRanged(RangedBehaviour ranged)
     {
