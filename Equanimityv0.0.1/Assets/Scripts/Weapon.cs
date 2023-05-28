@@ -5,13 +5,14 @@ using UnityEngine;
 public class Weapon : Item
 {
     protected int baseRange, baseDamage;
-    protected float baseCooldown;
+    protected float baseCooldown, baseKnockback;
     
-    public Weapon(int baseDamage, int baseRange, float baseCooldown) : base ()
+    public Weapon(int baseDamage, int baseRange, float baseCooldown, float baseKnockback) : base ()
     {
         this.baseDamage = baseDamage;
         this.baseRange = baseRange;
         this.baseCooldown = baseCooldown;
+        this.baseKnockback = baseKnockback;
     }
 
     public int GetRange()
@@ -31,6 +32,12 @@ public class Weapon : Item
         return totalDamage;
     }
 
-    
+    public float GetKnockback()
+    {
+        float totalKnockback = baseKnockback * level;
+        return totalKnockback;
+    }
+
+
 
 }

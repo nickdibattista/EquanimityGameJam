@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Melee : Weapon
 {
-    public Melee(int baseDamage, int baseRange, float baseCooldown) : base(baseDamage, baseRange, baseCooldown)
+    public Melee(int baseDamage, int baseRange, float baseCooldown, float baseKnockback) : base(baseDamage, baseRange, baseCooldown, baseKnockback)
     {
 
     }
