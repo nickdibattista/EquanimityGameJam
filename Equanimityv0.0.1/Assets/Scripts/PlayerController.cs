@@ -57,15 +57,8 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1))
         {
-<<<<<<< Updated upstream
             ranged.Fire();
-            anim.SetTrigger("Punch");
-=======
-            if (ranged.Fire())
-            {
-                //anim.SetTrigger("Punch");
-            }
->>>>>>> Stashed changes
+            //anim.SetTrigger("Punch");
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
