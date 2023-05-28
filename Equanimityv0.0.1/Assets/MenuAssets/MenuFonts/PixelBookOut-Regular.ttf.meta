@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f265d63f96baf8d48b12d2b1dabb75ab
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pixel Book Out
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a51ff2bea22c4f74f8ba4ee16bd42fec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
