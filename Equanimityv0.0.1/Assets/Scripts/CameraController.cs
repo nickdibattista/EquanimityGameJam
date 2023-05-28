@@ -39,19 +39,19 @@ public class CameraController : MonoBehaviour
     {
         transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime);
     }
-<<<<<<< Updated upstream
-=======
+    
 
     void Start()
     {
         // player = GameObject.Find("Player").GetComponent<Transform>();
         // cam = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
+    
 
     public void SetPlayer(GameObject player)
     {
         this.player = player.transform;
     }
->>>>>>> Stashed changes
+    
 }
 

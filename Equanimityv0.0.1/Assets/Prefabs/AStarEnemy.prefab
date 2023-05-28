@@ -221,7 +221,7 @@ MonoBehaviour:
   endReachedDistance: 0.79
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &7443910486899709382
 MonoBehaviour:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
+  target: {fileID: 137765091644497809, guid: ddd5cac2878a885478397bc83346f95d, type: 3}
 --- !u!50 &7443910486899709385
 Rigidbody2D:
   serializedVersion: 4
@@ -299,3 +299,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manuallyCreate: 1
+  player: {fileID: 0}
