@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameObject gameController;
+    private GameLoop gameLoop;
     public Camera sceneCamera;
     public float moveSpeed;
     public Rigidbody2D rb;
     private Vector2 moveDirection;
     private Vector2 mousePosition;
-    private MeleeBehaviour melee;
-    private RangedBehaviour ranged;
+    private GameObject meleeItem, rangedItem, punchItem;
+    private MeleeBehaviour meleeBehaviour, punchBehaviour;
+    private RangedBehaviour rangedBehaviour;
     [SerializeField]
     private Animator anim;
     public Player player;
@@ -33,7 +36,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        player = new Player();
+        //gameLoop = gameController.GetComponent<GameLoop>();
+        //player = new Player();
         //sceneCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
@@ -48,20 +52,32 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetMouseButtonDown(0))
+        if (!gameLoop.InWorkshop())
         {
-            if (melee.Fire())
+            if (Input.GetMouseButtonDown(0))
             {
-
-                anim.Play("SwingBat");
+                if (meleeItem.activeSelf)
+                {
+                    if (meleeBehaviour.Fire())
+                    {
+                        anim.Play("SwingBat");
+                    }
+                }
+                else
+                {
+                    if (punchBehaviour.Fire())
+                    {
+                        anim.Play("Punch");
+                    }
+                }
             }
-        }
 
-        if(Input.GetMouseButtonDown(1))
-        {
-            if (ranged.Fire())
+            if (Input.GetMouseButtonDown(1) && rangedItem.activeSelf)
             {
-                anim.Play("Punch");
+                if (rangedBehaviour.Fire())
+                {
+                    anim.Play("Punch");
+                }
             }
         }
 
@@ -78,9 +94,15 @@ public class PlayerController : MonoBehaviour
         rb.rotation = aimAngle;
     }
 
-    public void SetMelee(MeleeBehaviour melee)
+    public void SetMelee(GameObject melee)
     {
-        this.melee = melee;
+        meleeItem = melee;
+        meleeBehaviour = melee.GetComponent<MeleeBehaviour>();
+    }
+    public void SetPunch(GameObject punch)
+    {
+        punchItem = punch;
+        punchBehaviour = punch.GetComponent<MeleeBehaviour>();
     }
 
     public float CalculatedHealth(int damage)
@@ -89,13 +111,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void SetRanged(RangedBehaviour ranged)
+    public void SetRanged(GameObject ranged)
     {
-        this.ranged = ranged;
+        rangedItem = ranged;
+        rangedBehaviour = ranged.GetComponent<RangedBehaviour>();
     }
 
     public void SetCamera(GameObject camera)
     {
         sceneCamera = camera.GetComponent<Camera>();
     }
+
+    public void SetPlayer(Player player)
+    {
+        this.player = player;
+    }
+    public void SetGameLoop(GameLoop gameLoop)
+    {
+        this.gameLoop = gameLoop;
+    }
+
+
+
 }

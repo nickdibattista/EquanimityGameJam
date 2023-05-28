@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 public class GameLoop : MonoBehaviour
 {
     [SerializeField]
-    private GameObject camera, playerObject, meleeObject, rangedObject, armorObject, mapCover, workshopCover, itemSwapButtons, playerPrefab, evilEyePrefab, batPrefab, molotovPrefab, chestProtectorPrefab;
+    private GameObject camera, playerObject, itemSwapButtons, playerPrefab, evilEyePrefab, batPrefab, molotovPrefab, chestProtectorPrefab, punchPrefab;
     [SerializeField]
     private List<GameObject> spawnPoints = new List<GameObject>();
 
@@ -18,6 +18,7 @@ public class GameLoop : MonoBehaviour
     private Upgrader upgraderScript = new Upgrader();
 
     private List<Item> allItems = new List<Item>();
+    private List<GameObject> itemGameobjects = new List<GameObject>();
     private Item[] equippedItems = new Item[2];
 
     private bool inWorkshop = true;
@@ -28,10 +29,16 @@ public class GameLoop : MonoBehaviour
 
     void Start()
     {
-        playerObject = Instantiate(playerPrefab, new Vector2(71.5f, 21), Quaternion.identity);
+        playerObject = Instantiate(playerPrefab, new Vector2(-4, 22), Quaternion.identity);
+        playerScript = new Player();
+
         playerController = playerObject.GetComponent<PlayerController>();
         playerController.SetCamera(camera);
+        playerController.SetPlayer(playerScript);
+        playerController.SetGameLoop(this);
         camera.GetComponent<CameraController>().SetPlayer(playerObject);
+
+
 
 
         /*Melee meleeWeapon = new Melee(10, 10, 1);
@@ -42,9 +49,14 @@ public class GameLoop : MonoBehaviour
         SpawnItem("bat");
         SpawnItem("molotov");
         SpawnItem("chestProtector");
+        SpawnItem("punch");
         SpawnEnemy("evilEye");
-        SpawnEnemy("evilEye");
-        SpawnEnemy("evilEye");
+        /*SpawnEnemy("evilEye");
+        SpawnEnemy("evilEye");*/
+
+        playerScript.SetItems(allItems);
+
+
 
 
         // TEMPORARY \/
@@ -61,24 +73,36 @@ public class GameLoop : MonoBehaviour
         {
             case "bat":
                 GameObject melee = Instantiate(batPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
+                itemGameobjects.Add(melee);
                 melee.transform.localPosition = new Vector3(0, 0.3f, -1);
                 Melee meleeScript = new Melee(10, 1, 0.5f, 1f);
                 melee.GetComponent<MeleeBehaviour>().SetMeleeScript(meleeScript);
-                playerController.SetMelee(melee.GetComponent<MeleeBehaviour>());
+                playerController.SetMelee(melee);
                 allItems.Add(meleeScript);
                 break;
             case "molotov":
                 GameObject ranged = Instantiate(molotovPrefab, new Vector3(0, 0.2f, 0), Quaternion.identity, playerObject.transform);
+                itemGameobjects.Add(ranged);
                 ranged.transform.localPosition = new Vector3(0, 0.2f, -1);
                 Ranged rangedScript = new Ranged(30, 2, 3, 0.75f);
                 ranged.GetComponent<RangedBehaviour>().SetRangedScript(rangedScript);
-                playerController.SetRanged(ranged.GetComponent<RangedBehaviour>());
+                playerController.SetRanged(ranged);
                 allItems.Add(rangedScript);
                 break;
             case "chestProtector":
                 GameObject armor = Instantiate(chestProtectorPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
+                itemGameobjects.Add(armor);
                 Armor armorScript = new Armor(0.7f, 0.2f);
                 allItems.Add(armorScript);
+                break;
+            case "punch":
+                GameObject punch = Instantiate(punchPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerObject.transform);
+                itemGameobjects.Add(punch);
+                punch.transform.localPosition = new Vector3(0, 0.3f, -1);
+                Melee punchScript = new Melee(5, 1, 0.5f, 0.5f);
+                punch.GetComponent<MeleeBehaviour>().SetMeleeScript(punchScript);
+                playerController.SetPunch(punch);
+                //allItems.Add(punchScript);
                 break;
         }
 
@@ -131,17 +155,17 @@ public class GameLoop : MonoBehaviour
         upgraderItemSwapped = false;
         playerObject.transform.position = new Vector2(0, 27.5f);
         inWorkshop = true;
-        mapCover.SetActive(true);
-        workshopCover.SetActive(false);
+        //mapCover.SetActive(true);
+        //workshopCover.SetActive(false);
     }
     public void ExitWorkshop()
     {
         if (upgraderItemSwapped)
         {
-            playerObject.transform.position = new Vector2(0, 30);
+            playerObject.transform.position = new Vector2(71.5f, 21);
             inWorkshop = false;
-            workshopCover.SetActive(true);
-            mapCover.SetActive(false);
+            //workshopCover.SetActive(true);
+            //mapCover.SetActive(false);
         }
     }
 
@@ -165,21 +189,33 @@ public class GameLoop : MonoBehaviour
 
         if (itemScript is Melee)
         {
-            playerObject.transform.Find("Melee").gameObject.SetActive(false);
+            itemGameobjects[0].SetActive(false);
+            itemGameobjects[1].SetActive(true);
+            itemGameobjects[2].SetActive(true);
+            allItems[0].SetEquipped(false);
+            allItems[1].SetEquipped(true);
+            allItems[2].SetEquipped(true);
+            /*playerObject.transform.Find("Melee").gameObject.SetActive(false);
             playerObject.transform.Find("Ranged").gameObject.SetActive(true);
-            playerObject.transform.Find("Armor").gameObject.SetActive(true);
+            playerObject.transform.Find("Armor").gameObject.SetActive(true);*/
         }
         else if (itemScript is Ranged)
         {
-            playerObject.transform.Find("Melee").gameObject.SetActive(true);
-            playerObject.transform.Find("Ranged").gameObject.SetActive(false);
-            playerObject.transform.Find("Armor").gameObject.SetActive(true);
+            itemGameobjects[0].SetActive(true);
+            itemGameobjects[1].SetActive(false);
+            itemGameobjects[2].SetActive(true);
+            allItems[0].SetEquipped(true);
+            allItems[1].SetEquipped(false);
+            allItems[2].SetEquipped(true);
         }
         else if (itemScript is Armor)
         {
-            playerObject.transform.Find("Melee").gameObject.SetActive(true);
-            playerObject.transform.Find("Ranged").gameObject.SetActive(true);
-            playerObject.transform.Find("Armor").gameObject.SetActive(false);
+            itemGameobjects[0].SetActive(true);
+            itemGameobjects[1].SetActive(true);
+            itemGameobjects[2].SetActive(false);
+            allItems[0].SetEquipped(true);
+            allItems[1].SetEquipped(true);
+            allItems[2].SetEquipped(false);
         }
 
     }

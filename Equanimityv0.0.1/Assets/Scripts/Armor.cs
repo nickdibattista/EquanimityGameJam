@@ -14,9 +14,10 @@ public class Armor : Item
         this.weight = weight;
     }
 
-    public int GetDamage(int baseDamage)
+    public float GetDamage(float baseDamage)
     {
-        int totalDamage = Mathf.FloorToInt(baseDamage * damageCoef);
+        float totalDamage = baseDamage * damageCoef;
+        Debug.Log($"{baseDamage} * {damageCoef} = {totalDamage}");
         return totalDamage;
     }
 
