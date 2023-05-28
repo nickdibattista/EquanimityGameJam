@@ -569,11 +569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 568667471407242982, guid: 4824d5b843c050a40a9d1d98f6be324f, type: 3}
-  firePoint: {fileID: 137765091427326012}
-  fireForce: 0
-  baseDamage: 10
-  baseRange: 0
-  baseCooldown: 1
 --- !u!1 &137765091326117504
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,8 +640,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 726266747
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: -362949838, guid: ece082d7ab616434d8f7e3d66078d1d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -902,7 +897,6 @@ MonoBehaviour:
   sceneCamera: {fileID: 2673259173656066150, guid: 9ac0ed8c4fa9a1641887778cbb11f6d7, type: 3}
   moveSpeed: 5
   rb: {fileID: 137765091644497839}
-  melee: {fileID: 137765091427326013}
   anim: {fileID: 137765091326117505}
   healthBarUI: {fileID: 137765090973397698}
   slider: {fileID: 137765091566382213}
@@ -956,11 +950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 568667471407242982, guid: 4824d5b843c050a40a9d1d98f6be324f, type: 3}
-  firePoint: {fileID: 137765091783019921}
-  fireForce: 0
-  baseDamage: 0
-  baseRange: 0
-  baseCooldown: 0
 --- !u!1 &137765091783019920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,8 +995,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 568667471407242982, guid: 4824d5b843c050a40a9d1d98f6be324f, type: 3}
-  firePoint: {fileID: 137765091783019921}
-  fireForce: 0
-  baseDamage: 0
-  baseRange: 0
-  baseCooldown: 0

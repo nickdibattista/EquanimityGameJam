@@ -59,6 +59,8 @@ public class Throwable : MonoBehaviour
         GameObject prop = Instantiate(projectile, transform.position, transform.rotation);
         prop.GetComponent<Projectile>().SetDamage(damage);
         prop.GetComponent<Projectile>().SetRadius(radius);
+        //prop.GetComponent<Projectile>().SetAnimator(anim);
+
         Destroy(gameObject);
     }
 

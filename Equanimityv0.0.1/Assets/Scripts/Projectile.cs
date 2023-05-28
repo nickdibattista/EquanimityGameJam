@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     protected int damage;
     protected float radius = 0.5f;
     protected float knockback = 0;
+    public Animator anim;
 
     private void Start()
     {
@@ -55,8 +56,17 @@ public class Projectile : MonoBehaviour
         this.knockback = knockback;
     }
 
+    public void SetAnimator(Animator anim)
+    {
+        this.anim = anim;
+    }
+
     IEnumerator Decay()
     {
+        if (anim != null)
+        {
+            anim.Play("MolotovExplosion");
+        }
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
