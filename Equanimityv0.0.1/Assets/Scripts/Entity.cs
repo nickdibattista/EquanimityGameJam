@@ -27,4 +27,11 @@ public class Entity
     {
         return damage;
     }
+
+    public virtual int TakeDamage(int damage)
+    {
+        health -= damage;
+        return health;
+    }
+
 }
